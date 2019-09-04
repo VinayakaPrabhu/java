@@ -21,11 +21,9 @@ public static void creatingCards() {
 	hdfcCreditCard.active = true;
 	
 	//accessing the variables.
-//	System.out.println(hdfcCreditCard.cardNo );
-//	System.out.println(hdfcCreditCard.cardHolderName);
-//	System.out.println(hdfcCreditCard.active);
-	//System.out.println(hdfcCreditCard.toString());
-	System.out.println(hdfcCreditCard);
+	System.out.println(hdfcCreditCard.cardNo );
+	System.out.println(hdfcCreditCard.cardHolderName);
+	System.out.println(hdfcCreditCard.active);
 }
 public static void creatingCardsWithArrays() {
 	CreditCard cardsArray [] = new CreditCard[2];

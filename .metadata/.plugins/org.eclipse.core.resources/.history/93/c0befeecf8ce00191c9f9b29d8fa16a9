@@ -6,9 +6,8 @@ public class CreditCard extends Object{
 public String cardNo;
 public String cardHolderName;
 public boolean active;
-public String cardType = "Visa";
-@Override
-public String toString() {
-	return cardNo + "\n" + cardHolderName + "\n"+ active  + "\n" + cardType;
-}
+//@Override
+//public String toString() {
+//	return cardNo + "\n" + cardHolderName + "\n"+ active ;
+//}
 }
