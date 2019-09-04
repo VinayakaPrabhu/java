@@ -1,0 +1,1 @@
+1. Create two products, store details and diplay them.

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Extract method &apos;private static void creatingCards()&apos; from &apos;oops.App.main()&apos; to &apos;oops.App&apos;&#x0D;&#x0A;- Original project: &apos;oops&apos;&#x0D;&#x0A;- Method name: &apos;creatingCards&apos;&#x0D;&#x0A;- Destination type: &apos;oops.App&apos;&#x0D;&#x0A;- Declared visibility: &apos;private&apos;" comments="false" description="Extract method &apos;creatingCards&apos;" destination="0" exceptions="false" flags="786434" id="org.eclipse.jdt.ui.extract.method" input="/src&lt;oops{App.java" name="creatingCards" replace="false" selection="80 483" stamp="1567588221066" version="1.0" visibility="2"/>
+</session>

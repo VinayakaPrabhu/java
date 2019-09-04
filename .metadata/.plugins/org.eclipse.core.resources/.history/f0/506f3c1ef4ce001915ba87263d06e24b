@@ -1,0 +1,26 @@
+package oops;
+
+public class App {
+//static method
+public static void main(String[] args) {
+ App appObj = new App();
+ appObj.creatingCards();
+}
+
+//instance method
+public void creatingCards() {
+	//Creating a Reference (object)
+	CreditCard hdfcCreditCard = null;
+	//Creating an instance and assigning to the reference
+	hdfcCreditCard = new CreditCard();
+	//setting the values for variables
+	hdfcCreditCard.cardNo = "12345";
+	hdfcCreditCard.cardHolderName = "Rambo";
+	hdfcCreditCard.active = true;
+	
+	//accessing the variables.
+	System.out.println(hdfcCreditCard.cardNo );
+	System.out.println(hdfcCreditCard.cardHolderName);
+	System.out.println(hdfcCreditCard.active);
+}
+}

@@ -1,0 +1,62 @@
+package oops;
+
+public class App {
+//static method
+public static void main(String[] args) {
+// App appObj = new App();
+// appObj.creatingCards();
+	
+//	creatingCards();
+	creatingCardsWithArrays();
+}
+
+public static void creatingCards() {
+	//Creating a Reference (object)
+	CreditCard hdfcCreditCard = null;
+	//Creating an instance and assigning to the reference
+	hdfcCreditCard = new CreditCard();
+	//setting the values for variables
+	hdfcCreditCard.cardNo = "12345";
+	hdfcCreditCard.cardHolderName = "Rambo";
+	hdfcCreditCard.active = true;
+	
+	//accessing the variables.
+	System.out.println(hdfcCreditCard.cardNo );
+	System.out.println(hdfcCreditCard.cardHolderName);
+	System.out.println(hdfcCreditCard.active);
+}
+public static void creatingCardsWithArrays() {
+	CreditCard cardsArray [] = new CreditCard[2];
+	
+	//Creating a Reference (object)
+	CreditCard hdfcCreditCard = null;
+	//Creating an instance and assigning to the reference
+	hdfcCreditCard = new CreditCard();
+	//setting the values for variables
+	hdfcCreditCard.cardNo = "12345";
+	hdfcCreditCard.cardHolderName = "Rambo";
+	hdfcCreditCard.active = true;
+
+	cardsArray[0] = hdfcCreditCard;
+	//accessing the variables.
+
+	//Creating a Reference (object)
+		CreditCard hdfcCreditCard1 = null;
+		//Creating an instance and assigning to the reference
+		hdfcCreditCard1 = new CreditCard();
+		//setting the values for variables
+		hdfcCreditCard1.cardNo = "012345";
+		hdfcCreditCard1.cardHolderName = "0Rambo";
+		hdfcCreditCard1.active = false;
+		
+		cardsArray[1] = hdfcCreditCard1;
+		
+		for(int i = 0; i<cardsArray.length;i ++) {
+			System.out.println("Card " + (i+1));
+			System.out.println(cardsArray[i].cardNo );
+			System.out.println(cardsArray[i].cardHolderName);
+			System.out.println(cardsArray[i].active);
+			System.out.println();
+		}
+}
+}
