@@ -169,53 +169,6 @@ insert into DailyIncome values ('SPIKE', 'WED', 500)
 insert into DailyIncome values ('SPIKE', 'TUE', 200)
 DELETE FROM DAILYINCOME
 
---PIVOT
-USE DEMO;
-create table DailyIncome(VendorId nvarchar(10), IncomeDay nvarchar(10), IncomeAmount int)
-insert into DailyIncome values ('SPIKE', 'FRI', 100)
-insert into DailyIncome values ('SPIKE', 'MON', 300)
-insert into DailyIncome values ('FREDS', 'SUN', 400)
-insert into DailyIncome values ('SPIKE', 'WED', 500)
-insert into DailyIncome values ('SPIKE', 'TUE', 200)
-insert into DailyIncome values ('JOHNS', 'WED', 900)
-insert into DailyIncome values ('SPIKE', 'FRI', 100)
-insert into DailyIncome values ('JOHNS', 'MON', 300)
-insert into DailyIncome values ('SPIKE', 'SUN', 400)
-insert into DailyIncome values ('JOHNS', 'FRI', 300)
-insert into DailyIncome values ('FREDS', 'TUE', 500)
-insert into DailyIncome values ('FREDS', 'TUE', 200)
-insert into DailyIncome values ('SPIKE', 'MON', 900)
-insert into DailyIncome values ('FREDS', 'FRI', 900)
-insert into DailyIncome values ('FREDS', 'MON', 500)
-insert into DailyIncome values ('JOHNS', 'SUN', 600)
-insert into DailyIncome values ('SPIKE', 'FRI', 300)
-insert into DailyIncome values ('SPIKE', 'WED', 500)
-insert into DailyIncome values ('SPIKE', 'FRI', 300)
-insert into DailyIncome values ('JOHNS', 'THU', 800)
-insert into DailyIncome values ('JOHNS', 'SAT', 800)
-insert into DailyIncome values ('SPIKE', 'TUE', 100)
-insert into DailyIncome values ('SPIKE', 'THU', 300)
-insert into DailyIncome values ('FREDS', 'WED', 500)
-insert into DailyIncome values ('SPIKE', 'SAT', 100)
-insert into DailyIncome values ('FREDS', 'SAT', 500)
-insert into DailyIncome values ('FREDS', 'THU', 800)
-insert into DailyIncome values ('JOHNS', 'TUE', 600)
-SELECT * FROM DAILYINCOME;
-SELECT * FROM DAILYINCOME WHERE INCOMEDAY = 'TUE' AND VENDORID = 'FREDS'
-select * from DailyIncome
-pivot (avg (IncomeAmount) for IncomeDay in ([MON],[TUE],[WED],[THU],[FRI],[SAT],[SUN])) as AvgIncomePerDay
-
-select * from DailyIncome
-pivot (max (IncomeAmount) for IncomeDay in ([MON],[TUE],[WED],[THU],[FRI],[SAT],[SUN])) as MaxIncomePerDay
-where VendorId in ('SPIKE')
-
-
-select * from DailyIncome                                 -- Colums to pivot
-pivot (
-   max (IncomeAmount)                                                    -- Pivot on this column
-   for IncomeDay in ([MON],[TUE],[WED],[THU],[FRI],[SAT],[SUN]))         -- Make colum where IncomeDay is in one of these.
-   as MaxIncomePerDay                                                     -- Pivot table alias
-where VendorId in ('SPIKE')                               -- Select only for this vendor
 
 USE AdventureWorks2012 ;  
 GO  
@@ -230,52 +183,9 @@ GROUP BY DaysToManufacture
 
 select * from dummy;
 
-SELECT 'AverageCost' AS Cost_Sorted_By_Production_Days,   
-[0], [1], [2], [3], [4]  
-FROM  
-(select * from dummy) AS SourceTable  
-PIVOT  
-(  
-AVG(AverageCost)  
-FOR DaysToManufacture IN ([0], [1], [2], [3],[4])  
-) AS PivotTable;  
-
---SETUP FULL TEXT
---1.INSTALL FULL-TEXT SEARCH FEATURE.
---2. CREATE FULL-TEXT SEARCH CATALOG. 
-use AdventureWorks2012
-create fulltext catalog FullTextCatalog as default
-
- create fulltext index on Production.ProductDescription(Description)
- key index PK_ProductDescription_ProductDescriptionID
---CREATE FULLTEXT INDEX
---VERIFY CATALOG
---select * from sys.fulltext_catalogs
---SELECT * FROM SYS.DATABASES
 SELECT * FROM SYS.tables;
 SELECT * FROM SYS.TRIGGERS;
 SELECT * FROM SYS.OBJECTS;
 SELECT DISTINCT TYPE FROM SYS.OBJECTS;
 --PREDICATES, CONTAINS
 
-USE AdventureWorks2012;  
-GO  
-DECLARE @SearchWord varchar(30)  
-SET @SearchWord ='performance'  
-SELECT Description   
-FROM Production.ProductDescription   
-WHERE CONTAINS(Description, @SearchWord);  
-
-SELECT * FROM Production.Product  
-Use AdventureWorks2012;  
-GO  
-SELECT Name, Color   
-FROM Production.Product  
-WHERE CONTAINS((Name, Color,ProductNumber), 'Red');  
-
-USE AdventureWorks2012;  
-SELECT SERVERPROPERTY('IsFullTextInstalled')
-EXEC sp_fulltext_database 'enable'
-SELECT * FROM sys.fulltext_indexes  
-    where object_id = object_id('HumanResources.JobCandidate');   
-GO
