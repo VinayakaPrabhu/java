@@ -87,4 +87,13 @@ FROM Sales.SalesTerritory AS st
 RIGHT OUTER JOIN Sales.SalesPerson AS sp  
 ON st.TerritoryID = sp.TerritoryID ;  
 
+USE AdventureWorks2012
+--JOINING MULTIPLE TABLES
+SELECT * FROM PRODUCTION.PRODUCT;
+SELECT * FROM PRODUCTION.ProductPhoto;
+SELECT * FROM PRODUCTION.ProductProductPhoto;
 
+SELECT LargePhotoFileName, NAME 
+FROM PRODUCTION.PRODUCT
+JOIN PRODUCTION.ProductProductPhoto ON PRODUCTION.PRODUCT.ProductID = PRODUCTION.ProductProductPhoto.ProductID
+JOIN PRODUCTION.ProductPhoto ON PRODUCTION.ProductProductPhoto.ProductPhotoID = PRODUCTION.ProductPhoto.ProductPhotoID;
