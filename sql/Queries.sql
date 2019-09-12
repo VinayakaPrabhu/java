@@ -176,16 +176,23 @@ GO
 SELECT DaysToManufacture 
 FROM Production.Product  
 
-
-SELECT DaysToManufacture, AVG(StandardCost) AS AverageCost into dummy   
+drop table dummy;
+select  DaysToManufacture, AVG(StandardCost) AS AverageCost into dummy   
 FROM Production.Product  
 GROUP BY DaysToManufacture
 
 select * from dummy;
 
+insert into dummy
+select  DaysToManufacture, AVG(StandardCost) AS AverageCost  
+FROM Production.Product  
+GROUP BY DaysToManufacture
+
 SELECT * FROM SYS.tables;
 SELECT * FROM SYS.TRIGGERS;
 SELECT * FROM SYS.OBJECTS;
+
 SELECT DISTINCT TYPE FROM SYS.OBJECTS;
+https://docs.microsoft.com/en-us/sql/relational-databases/system-catalog-views/sys-objects-transact-sql?view=sql-server-2017
 --PREDICATES, CONTAINS
 
